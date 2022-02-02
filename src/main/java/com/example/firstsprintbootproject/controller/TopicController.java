@@ -8,9 +8,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-public class HelloController {
-    @GetMapping("/hello")
-    public String sayHello(){
-        return "HELLO";
+public class TopicController {
+    @GetMapping("/topics")
+    public List<Topic> topicList(){
+        return Arrays.asList(
+                new Topic("Java","Java Language","Java Language Description"),
+                new Topic("Spring","Spring Framework","Spring Framework Description")
+        );
     }
 }

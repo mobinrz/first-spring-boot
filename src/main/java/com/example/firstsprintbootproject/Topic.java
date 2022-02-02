@@ -1,4 +1,4 @@
-package com.example.firstsprintbootproject.service;
+package com.example.firstsprintbootproject;
 
 public class Topic {
 
