@@ -11,6 +11,6 @@ import java.util.List;
 public class HelloController {
     @GetMapping("/hello")
     public String sayHello(){
-        return "HELLO";
+        return "HELLO SPRING BOOT - JAVA";
     }
 }

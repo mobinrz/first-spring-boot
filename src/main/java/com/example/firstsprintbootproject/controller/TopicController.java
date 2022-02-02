@@ -1,19 +1,42 @@
 package com.example.firstsprintbootproject.controller;
 
 import com.example.firstsprintbootproject.Topic;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.firstsprintbootproject.service.TopicService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
 public class TopicController {
+
+    @Autowired
+    private TopicService topicService;
+
     @GetMapping("/topics")
-    public List<Topic> topicList(){
-        return Arrays.asList(
-                new Topic("Java","Java Language","Java Language Description"),
-                new Topic("Spring","Spring Framework","Spring Framework Description")
-        );
+    public List<Topic> getList(){
+        return topicService.getTopics();
     }
+
+    @GetMapping("/topics/{id}")
+    public Topic getTopic(@PathVariable String id){
+        return topicService.getTopic(id);
+    }
+
+    @PostMapping("/topics")
+    public void storeTopic(@RequestBody Topic topic){
+        topicService.addTopic(topic);
+    }
+
+    @PutMapping("/topics/{id}")
+    public void updateTopic(@RequestBody Topic topic, @PathVariable String id){
+        topicService.updateTopic(id, topic);
+    }
+
+    @DeleteMapping("/topics/{id}")
+    public void deleteTopic(@PathVariable String id){
+        topicService.deleteTopic(id);
+    }
+
 }
