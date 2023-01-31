@@ -10,6 +10,7 @@ public class Course {
     @Id
     private String id;
     private String name;
+    private String code;
     private String description;
 
     @ManyToOne
@@ -19,9 +20,10 @@ public class Course {
 
     }
 
-    public Course(String id, String name, String description, String topicId) {
+    public Course(String id, String name, String code, String description, String topicId) {
         this.id = id;
         this.name = name;
+        this.code = code;
         this.description = description;
         this.topic = new Topic(topicId, "", "");
     }
@@ -40,6 +42,14 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode(){
+        return code;
+    }
+
+    public void setCode(String code){
+        this.code = code;
     }
 
     public String getDescription() {
